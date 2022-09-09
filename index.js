@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const demoRoute = require('./routes/demo');
 const demoDataBaseRoute = require('./routes/demo-with-database');
-
+const loginRoute = require('./routes/login');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -13,6 +13,7 @@ app.use('/api', demoRoute);
 
 //database demo table tbl_user -> id: BIGINT| username and password: nvarchar(150)
 app.use('/user', demoDataBaseRoute);
+app.use('/login', loginRoute);
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Connected at port ${PORT}`);
